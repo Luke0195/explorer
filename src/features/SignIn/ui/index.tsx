@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { IoPersonSharp } from 'react-icons/io5'
 
-import { Toggle, Input, Button } from '../../../components'
+import { Toggle, Button } from '../../../components'
 import { Credencials } from '../protocols'
 
 import getSchema from '../validators/schema'
 import SignContext from '../context'
 
 import * as S from './styles'
+import * as Styled from '../components/Input/styled'
 import logo from '../../../assets/icons/logo.svg'
 import gitHubLogo from '../../../assets/icons/githublogo.png'
 
@@ -27,6 +28,26 @@ const SignInUi = (): JSX.Element => {
     resolver: yupResolver(getSchema()),
   })
 
+  const {
+    register,
+    getValues,
+    formState: { dirtyFields },
+  } = form
+
+  const registerFields = () => {
+    const keys: (keyof Credencials)[] = ['username']
+    keys.forEach((key) => {
+      const value = getValues()
+      if (value === undefined) {
+        register(key)
+      }
+    })
+  }
+
+  useEffect(() => {
+    registerFields()
+  }, [form.formState])
+
   return (
     <SignContext.Provider
       value={{
@@ -36,22 +57,26 @@ const SignInUi = (): JSX.Element => {
       <S.Container>
         <S.Header>
           <img src={logo} alt='logo do github explorer' />
-
           <Toggle />
         </S.Header>
 
         <S.Main>
           <img src={gitHubLogo} alt='logo do github' />
           <h2> Explore repositórios no GitHub</h2>
+
           <S.Form>
-            <Input
-              name='username'
-              placeholder='Nome do usuário'
-              icon={IoPersonSharp}
-            />
-            <Button type='button' disabled={true}>
-              {' '}
-              Entrar{' '}
+            <S.FormWrapper>
+              <IoPersonSharp size={20} />
+              <Styled.Input
+                placeholder='Informe o nome do usuário'
+                {...register('username')}
+              />
+            </S.FormWrapper>
+            <Button
+              type='button'
+              disabled={Object.keys(dirtyFields).length > 0}
+            >
+              Entrar
             </Button>
           </S.Form>
         </S.Main>
