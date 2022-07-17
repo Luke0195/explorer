@@ -8,6 +8,7 @@ export const Container = styled.div`
   display: flex;
   border-radius: 4px;
   align-items: center;
+  margin-bottom: 0.5rem;
 
   input {
     height: 2.65rem;
