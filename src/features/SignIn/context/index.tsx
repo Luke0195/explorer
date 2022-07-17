@@ -1,5 +1,6 @@
 import { createContext } from 'react'
 import { UseFormReturn, SetValueConfig } from 'react-hook-form'
+import { Credencials } from '../protocols'
 
 /*interface ContextForm extends UseFormMethods<Form> {
   setValueOptions: SetValueConfig,
@@ -12,7 +13,9 @@ interface ContextInterface {
 // se for utilizar uma versão mais antiga do react-hook-form
 */
 
-type ContextForm = UseFormReturn
+interface ContextForm extends UseFormReturn<Credencials> {
+  setValueOptions: SetValueConfig
+}
 interface SignInContextProps {
   form: ContextForm
 }
