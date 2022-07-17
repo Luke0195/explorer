@@ -14,6 +14,11 @@ export default createGlobalStyle`
   height:100%;
  }
 
+body{
+  background-color: ${(props) => props.theme.bg}
+}
+
+
  body, input,button{
   font-size: 1rem;
  }

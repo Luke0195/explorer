@@ -1,13 +1,16 @@
 import React from 'react'
-import { Input } from 'semantic-ui-react'
-
+import { ThemeProvider } from 'styled-components'
 import GlobalStyles from './assets/styles/global'
+import theme from './assets/theme'
+
 export default function App() {
   return (
     <React.Fragment>
-      <h1> GitHub Explorer </h1>
-      <Input />
-      <GlobalStyles />
+      <ThemeProvider theme={theme.dark}>
+        <h1> GitHub Explorer </h1>
+
+        <GlobalStyles />
+      </ThemeProvider>
     </React.Fragment>
   )
 }
