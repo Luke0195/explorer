@@ -7,7 +7,7 @@ const Input = (props: InputProps): JSX.Element => {
   const { name, icon: Icon, ...rest } = props
   return (
     <S.Container>
-      {Icon && <Icon size={18} />}
+      {Icon && <Icon size={20} />}
       <input name={name} {...rest} />
     </S.Container>
   )

@@ -8,5 +8,6 @@ declare module 'styled-components' {
     green: string
     dark: string
     text: string
+    border: string
   }
 }
