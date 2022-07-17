@@ -1,5 +1,13 @@
 import React from 'react'
+import { Input } from 'semantic-ui-react'
 
+import GlobalStyles from './assets/styles/global'
 export default function App() {
-  return <h1> GitHub Explorer</h1>
+  return (
+    <React.Fragment>
+      <h1> GitHub Explorer </h1>
+      <Input />
+      <GlobalStyles />
+    </React.Fragment>
+  )
 }
