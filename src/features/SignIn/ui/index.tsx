@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { IoPersonSharp } from 'react-icons/io5'
 
@@ -14,6 +15,8 @@ import * as Styled from '../components/Input/styled'
 import logo from '../../../assets/icons/logo.svg'
 import gitHubLogo from '../../../assets/icons/githublogo.png'
 
+import { verifyIfUserExists as request } from '../services'
+import { notEmptyStringOrDefault } from '../../../utils/Formatters'
 const setValueOptions = {
   shouldDirty: true,
   shouldValidate: true,
@@ -45,9 +48,17 @@ const SignInUi = (): JSX.Element => {
     })
   }
 
-  const onSubmit = (data: any) => {
-    console.log(data)
+  const onSubmit = async ({ username: user }: Credencials) => {
+    try {
+      const response = await request(user)
+      const { login, name } = response
+      localStorage.setItem('@githubExplorer:user', login)
+      toast.success(`Bem vindo ${notEmptyStringOrDefault(name)}!`)
+    } catch (error) {
+      toast.error(`Usuário Invalido`)
+    }
   }
+
   useEffect(() => {
     registerFields()
   }, [form.formState])
