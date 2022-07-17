@@ -23,7 +23,7 @@ const setValueOptions = {
 }
 const SignInUi = (): JSX.Element => {
   const form = useForm<Credencials>({
-    mode: 'onSubmit',
+    mode: 'all',
     reValidateMode: 'onChange',
     defaultValues: {
       username: '',
@@ -35,7 +35,8 @@ const SignInUi = (): JSX.Element => {
     register,
     getValues,
     handleSubmit,
-    formState: { dirtyFields },
+    setValue,
+    formState: { dirtyFields, isValid, errors },
   } = form
 
   const registerFields = () => {
@@ -55,7 +56,8 @@ const SignInUi = (): JSX.Element => {
       localStorage.setItem('@githubExplorer:user', login)
       toast.success(`Bem vindo ${notEmptyStringOrDefault(name)}!`)
     } catch (error) {
-      toast.error(`Usuário Invalido`)
+      toast.error(`Usuário Invalido!`)
+      setValue('username', '')
     }
   }
 
@@ -80,7 +82,7 @@ const SignInUi = (): JSX.Element => {
           <h2> Explore repositórios no GitHub</h2>
 
           <S.Form onSubmit={handleSubmit(onSubmit)}>
-            <S.FormWrapper>
+            <S.FormWrapper isValid={isValid}>
               <IoPersonSharp size={20} />
               <Styled.Input
                 placeholder='Informe o nome do usuário'

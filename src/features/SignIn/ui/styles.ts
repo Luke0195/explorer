@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Container = styled.div`
   width: 100%;
@@ -46,7 +46,11 @@ export const Form = styled.form`
   padding: 1rem 0.5rem;
   border-radius: 4px;
 `
-export const FormWrapper = styled.div`
+
+interface ValidForm {
+  isValid: boolean
+}
+export const FormWrapper = styled.div<ValidForm>`
   width: 100%;
   border: 1px solid #ccc;
   background: #fff;
@@ -73,4 +77,21 @@ export const FormWrapper = styled.div`
     justify-content: center;
     margin-left: 0.4rem;
   }
+
+  ${(props) => {
+    if (!props.isValid) {
+      return css`
+        border-color: #c8c8c8;
+        svg {
+          color: #c8c8c8;
+        }
+      `
+    }
+    return css`
+      border-color: #16697a;
+      svg {
+        color: #16697a;
+      }
+    `
+  }}
 `
