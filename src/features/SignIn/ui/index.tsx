@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { IoPersonSharp } from 'react-icons/io5'
 
-import { Toggle, Button } from '../../../components'
+import { Toggle, Button, Loading } from '../../../components'
 import { Credencials } from '../protocols'
 
 import getSchema from '../validators/schema'
@@ -17,11 +17,14 @@ import gitHubLogo from '../../../assets/icons/githublogo.png'
 
 import { verifyIfUserExists as request } from '../services'
 import { notEmptyStringOrDefault } from '../../../utils/Formatters'
+
 const setValueOptions = {
   shouldDirty: true,
   shouldValidate: true,
 }
+
 const SignInUi = (): JSX.Element => {
+  const [loading, setLoading] = useState<boolean>(false)
   const form = useForm<Credencials>({
     mode: 'all',
     reValidateMode: 'onChange',
@@ -36,7 +39,7 @@ const SignInUi = (): JSX.Element => {
     getValues,
     handleSubmit,
     setValue,
-    formState: { dirtyFields, isValid, errors },
+    formState: { dirtyFields, isValid },
   } = form
 
   const registerFields = () => {
@@ -50,6 +53,7 @@ const SignInUi = (): JSX.Element => {
   }
 
   const onSubmit = async ({ username: user }: Credencials) => {
+    setLoading(true)
     try {
       const response = await request(user)
       const { login, name } = response
@@ -58,6 +62,8 @@ const SignInUi = (): JSX.Element => {
     } catch (error) {
       toast.error(`Usuário Invalido!`)
       setValue('username', '')
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -72,6 +78,7 @@ const SignInUi = (): JSX.Element => {
       }}
     >
       <S.Container>
+        <Loading isLoading={loading} />
         <S.Header>
           <img src={logo} alt='logo do github explorer' />
           <Toggle />
