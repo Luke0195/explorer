@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -25,6 +26,9 @@ const setValueOptions = {
 
 const SignInUi = (): JSX.Element => {
   const [loading, setLoading] = useState<boolean>(false)
+
+  const navigate = useNavigate()
+
   const form = useForm<Credencials>({
     mode: 'all',
     reValidateMode: 'onChange',
@@ -59,6 +63,7 @@ const SignInUi = (): JSX.Element => {
       const { login, name } = response
       localStorage.setItem('@githubExplorer:user', login)
       toast.success(`Bem vindo ${notEmptyStringOrDefault(name)}!`)
+      navigate('/dashboard')
     } catch (error) {
       toast.error(`Usuário Invalido!`)
       setValue('username', '')

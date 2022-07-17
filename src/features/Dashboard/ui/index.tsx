@@ -1,7 +1,12 @@
 import React from 'react'
 
+import Header from '../components/Header'
 const DashboardUi = () => {
-  return <h1> Dashboard Ui</h1>
+  return (
+    <React.Fragment>
+      <Header />
+    </React.Fragment>
+  )
 }
 
 export default DashboardUi
