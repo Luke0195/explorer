@@ -31,6 +31,7 @@ const SignInUi = (): JSX.Element => {
   const {
     register,
     getValues,
+    handleSubmit,
     formState: { dirtyFields },
   } = form
 
@@ -44,6 +45,9 @@ const SignInUi = (): JSX.Element => {
     })
   }
 
+  const onSubmit = (data: any) => {
+    console.log(data)
+  }
   useEffect(() => {
     registerFields()
   }, [form.formState])
@@ -64,7 +68,7 @@ const SignInUi = (): JSX.Element => {
           <img src={gitHubLogo} alt='logo do github' />
           <h2> Explore repositórios no GitHub</h2>
 
-          <S.Form>
+          <S.Form onSubmit={handleSubmit(onSubmit)}>
             <S.FormWrapper>
               <IoPersonSharp size={20} />
               <Styled.Input
@@ -73,8 +77,8 @@ const SignInUi = (): JSX.Element => {
               />
             </S.FormWrapper>
             <Button
-              type='button'
-              disabled={Object.keys(dirtyFields).length > 0}
+              type='submit'
+              disabled={Object.keys(dirtyFields).length === 0}
             >
               Entrar
             </Button>
