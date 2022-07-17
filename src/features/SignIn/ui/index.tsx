@@ -20,7 +20,7 @@ const SignInUi = (): JSX.Element => {
         <h2> Explore repositórios no GitHub</h2>
         <S.Form>
           <Input
-            name='userName'
+            name='username'
             placeholder='Nome do usuário'
             icon={IoPersonSharp}
           />
