@@ -15,7 +15,8 @@ export default createGlobalStyle`
  }
 
 body{
-  background-color: ${(props) => props.theme.bg}
+  background-color: ${(props) => props.theme.bg};
+  transition:  background-color 1s ease-out;
 }
 
 
