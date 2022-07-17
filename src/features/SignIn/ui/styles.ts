@@ -26,9 +26,16 @@ export const Main = styled.main`
     width: 6.25rem;
     height: 6.25rem;
   }
+  h2 {
+    width: 18.75rem;
+    color: ${(props) => props.theme.text};
+    text-align: center;
+    font-weight: 700;
+  }
 `
 
 export const Form = styled.div`
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
