@@ -5,5 +5,5 @@ export default {
   green: '#24a44e',
   dark: '#161B23',
   text: '#c8c8c8',
-  border: '#6e7781',
+  border: '#c8c8c8',
 }

@@ -36,6 +36,7 @@ const Header = () => {
           />
           <Dropdown text={user.name || `Usuário sem nome`}>
             <Dropdown.Menu>
+              <Dropdown.Item text='Meu Perfil' onClick={handleSignOut} />
               <Dropdown.Item text='Sair' onClick={handleSignOut} />
             </Dropdown.Menu>
           </Dropdown>

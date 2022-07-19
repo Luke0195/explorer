@@ -1,5 +1,5 @@
 export default {
-  bg: '#1a1a1d',
+  bg: '#414142',
   gray: '#c9d1d9',
   white: '#fff',
   green: '#24a44e',

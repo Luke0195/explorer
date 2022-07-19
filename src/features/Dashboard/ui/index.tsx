@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import Header from '../components/Header'
+import Main from '../components/Main'
 import Loading from '../../../components/Loading'
 import DashboardContext from '../context/index'
 
@@ -45,6 +46,7 @@ const DashboardUi = () => {
       <S.Container>
         <Loading isLoading={loading}/>
         <Header />
+        <Main/>
       </S.Container>
     </DashboardContext.Provider>
   )
