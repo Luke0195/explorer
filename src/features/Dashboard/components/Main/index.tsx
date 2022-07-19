@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext  } from 'react';
 import { toast } from 'react-toastify'
 import { Input } from 'semantic-ui-react'
 import { FiChevronRight } from 'react-icons/fi'
@@ -8,13 +8,11 @@ import * as S from '../../ui/styles'
 
 import logo from '../../../../assets/icons/githublogo.png'
 
-
-
+import DashboardContext from '../../context';
 
 const Main = () => {
-
+  const { loading, setLoading } = useContext(DashboardContext)
   const [repository, setRepository] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false)
   const [data, setData] = useState<RepositoryData[]>([])
 
@@ -26,7 +24,7 @@ const Main = () => {
    try{
     const { data: respositoryData } = await request(repository);
     setData([...data, respositoryData])
-
+    setRepository('')
    }catch(error){
     toast.error('Repositório não encontrado!')
     setError(true)

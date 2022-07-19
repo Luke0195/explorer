@@ -83,13 +83,23 @@ export const MainContent = styled.div`
 `
 export const MainCard = styled.div`
  width:100%;
- background:${(props) => props.theme.card};
+ background:#fff;
  display:flex;
  flex-direction:row;
  align-items: center ;
- padding: 8px;
+ padding: 1rem;
  border-radius:4px;
+ cursor:pointer;
+ transition: all 1s ease-out;
 
+
+ &:hover{
+  transform: translateX(40px);
+ }
+
+ & + div{
+  margin: 1rem 0;
+ }
  img{
   width:30px;
   height:30px;
@@ -101,11 +111,13 @@ export const MainCard = styled.div`
   margin-left: 1rem;
 
   strong{
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
   p{
     color: #ccc;
+    font-size: 1rem;
+    margin-top:0.3rem;
   }
  }
 `

@@ -42,7 +42,7 @@ const DashboardUi = () => {
   },[])
 
   return (
-    <DashboardContext.Provider value={{ user }}>
+    <DashboardContext.Provider value={{ user, loading, setLoading }}>
       <S.Container>
         <Loading isLoading={loading}/>
         <Header />
