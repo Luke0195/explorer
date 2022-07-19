@@ -6,4 +6,5 @@ export default {
   dark: '#161B23',
   text: '#fff',
   border: '#fff',
+  card: '#fff'
 }

@@ -9,5 +9,6 @@ declare module 'styled-components' {
     dark: string
     text: string
     border: string
+    card: string
   }
 }

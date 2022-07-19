@@ -1,8 +1,10 @@
 import styled from 'styled-components'
+import theme from '../../../assets/theme'
 
 export const Container = styled.div`
  width:100%;
  height:100%;
+ position:relative;
 `
 
 // Main component Styles
@@ -41,6 +43,20 @@ align-items:center;
       height:25px;
       margin-left:1rem;
   }
+
+}
+
+p{
+    color:#9f3a38;
+    width:100%;
+    height:42px;
+    background:#e0b4b4;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    max-width:600px;
+    border-radius:4px;
+    margin-top: 8px;
 }
 .ui.input{
   width:100%;
@@ -58,4 +74,38 @@ align-items:center;
     border-color: #c8c8c8;
     //padding-right: 2.67142857em!important;
 }
+`
+
+export const MainContent = styled.div`
+ width: 100%;
+ max-width:600px;
+ margin: 20px auto;
+`
+export const MainCard = styled.div`
+ width:100%;
+ background:${(props) => props.theme.card};
+ display:flex;
+ flex-direction:row;
+ align-items: center ;
+ padding: 8px;
+ border-radius:4px;
+
+ img{
+  width:30px;
+  height:30px;
+  border-radius: 50%;
+ }
+
+ div{
+  flex:1;
+  margin-left: 1rem;
+
+  strong{
+    font-size: 1.2rem;
+  }
+
+  p{
+    color: #ccc;
+  }
+ }
 `
