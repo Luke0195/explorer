@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { Dropdown } from 'semantic-ui-react'
@@ -6,6 +6,7 @@ import Toggle from '../../../../components/Toggle'
 
 import * as S from './styles'
 import gitexplorLogo from '../../../../assets/icons/logo.svg'
+import DashboardContext from '../../context'
 const Header = () => {
   const navigate = useNavigate()
   const [userName, setUserName] = useState(() => {
@@ -16,6 +17,8 @@ const Header = () => {
     return ''
   })
 
+  const defaultImage = 'https://i.stack.imgur.com/l60Hf.png'
+  const { user } = useContext(DashboardContext)
   const handleSignOut = () => {
     toast.success('Volte Sempre!')
     localStorage.removeItem('@githubExplorer:user')
@@ -28,10 +31,10 @@ const Header = () => {
         <Toggle />
         <S.Profile>
           <img
-            src={'https://avatars.githubusercontent.com/u/55026379?v=4'}
+            src={user.avatar_url || defaultImage}
             alt='Image de perfil do usuário'
           />
-          <Dropdown text='Lucas Alves Dos Santos'>
+          <Dropdown text={user.name || `Usuário sem nome`}>
             <Dropdown.Menu>
               <Dropdown.Item text='Sair' onClick={handleSignOut} />
             </Dropdown.Menu>
