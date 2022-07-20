@@ -15,14 +15,18 @@ const ThemeProviderContext = (props: ComponentsProps) => {
   const [theme, setTheme] = useState<string>(() =>{
     const persistedTheme = localStorage.getItem('@githubexplorer:theme');
     if(persistedTheme === 'light'){
-      return  persistedTheme;
+      return  'light';
     }
     return 'dark'
   })
 
+  React.useEffect(() =>{
+    localStorage.setItem('@githubexplorer:theme', theme)
+  },[theme])
+
   const handleOnChangeTheme = useCallback(() => {
     setTheme((prevState) => (prevState === 'light' ? 'dark' : 'light'))
-    localStorage.setItem('@githubexplorer:theme', theme)
+
   },[theme])
 
   return (
