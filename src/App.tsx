@@ -14,14 +14,12 @@ export default function App() {
   const { theme: selectedTheme } = useContext(ThemeContext)
 
   return (
-    <BrowserRouter>
-      <ThemeProvider
-        theme={selectedTheme === 'light' ? theme.light : theme.dark}
-      >
+    <ThemeProvider theme={selectedTheme === 'light' ? theme.light : theme.dark}>
+      <BrowserRouter>
         <Routes />
         <GlobalStyles />
         <ToastContainer />
-      </ThemeProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }
