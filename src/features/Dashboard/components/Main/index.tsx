@@ -14,8 +14,17 @@ const Main = () => {
   const { loading, setLoading } = useContext(DashboardContext)
   const [repository, setRepository] = useState<string>('');
   const [error, setError] = useState<boolean>(false)
-  const [data, setData] = useState<RepositoryData[]>([])
+  const [data, setData] = useState<RepositoryData[]>(() =>{
+    const persistedRepository = localStorage.getItem('@githubexplorer:repository');
+    if(persistedRepository){
+      return JSON.parse(persistedRepository)
+    }
+    return []
+  })
 
+  React.useEffect(() =>{
+    localStorage.setItem('@githubexplorer:repository', JSON.stringify(data));
+  },[data])
 
 
   const handleAddRepository = async (e:React.FormEvent) =>{
@@ -25,6 +34,7 @@ const Main = () => {
     const { data: respositoryData } = await request(repository);
     setData([...data, respositoryData])
     setRepository('')
+
    }catch(error){
     toast.error('Repositório não encontrado!')
     setError(true)
