@@ -27,4 +27,4 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: build
-        run: yarn build | yarn run build
+        run: yarn build | npm run build
