@@ -4,6 +4,7 @@ import ProtectedRoute from './privateRoute'
 import SignIn from '../pages/SignIn'
 import Dashboard from '../pages/Dashboard'
 import Profile from '../pages/Profile'
+import Error404 from '../pages/Error404'
 
 const Routes = () => {
   return (
@@ -26,7 +27,7 @@ const Routes = () => {
         }
       />
 
-
+      <Route path="*" element={<Error404/>}/>
 
     </Switch>
   )
