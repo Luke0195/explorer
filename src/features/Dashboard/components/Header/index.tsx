@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Navigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { Dropdown } from 'semantic-ui-react'
 import Toggle from '../../../../components/Toggle'
@@ -36,7 +36,7 @@ const Header = () => {
           />
           <Dropdown text={user.name || `Usuário sem nome`}>
             <Dropdown.Menu>
-              <Dropdown.Item text='Meu Perfil' onClick={handleSignOut} />
+              <Dropdown.Item text='Meu Perfil' onClick={() => <Navigate to="/profile"/>} />
               <Dropdown.Item text='Sair' onClick={handleSignOut} />
             </Dropdown.Menu>
           </Dropdown>

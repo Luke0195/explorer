@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
+import { Outlet } from 'react-router-dom'
 import Header from '../components/Header'
 import Main from '../components/Main'
 import Loading from '../../../components/Loading'
@@ -48,6 +48,7 @@ const DashboardUi = () => {
         <Header />
         <Main/>
       </S.Container>
+       <Outlet/>
     </DashboardContext.Provider>
   )
 }

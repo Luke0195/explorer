@@ -3,6 +3,7 @@ import { Route, Routes as Switch } from 'react-router-dom'
 import ProtectedRoute from './privateRoute'
 import SignIn from '../pages/SignIn'
 import Dashboard from '../pages/Dashboard'
+import Profile from '../pages/Profile'
 
 const Routes = () => {
   return (
@@ -16,6 +17,17 @@ const Routes = () => {
           </ProtectedRoute>
         }
       />
+       <Route
+        path='profile'
+        element={
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        }
+      />
+
+
+
     </Switch>
   )
 }
