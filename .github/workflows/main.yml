@@ -5,26 +5,50 @@ name: CI
 
 on:
   push:
-    branches: [ "main" ]
+    # Run on all branches
+    branches:
+      - "*"
+    # Run only if files modified are not docs
+    paths-ignore:
+      - "*.md"
   pull_request:
-    branches: [ "main" ]
-
+    # Run on all branches
+    branches:
+      - "*"
+    # Run only if files modified are not docs
+    paths-ignore:
+      - "*.md"
 
 
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+
+  # Build & Test
+  buildAndTest:
+    name: Build & Test
     runs-on: ubuntu-latest
-
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-  
-      # Runs a single command using the runners shell
-      - name: install
-        run: yarn  | npm install
+      - uses: actions/checkout@v2
 
-      # Runs a set of commands using the runners shell
-      - name: build
-        run: yarn build | npm run build
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+
+      # Install
+      - name: INSTALL
+        uses: yarn /action-setup@v2.0.1
+        with:
+          version: 6.22.2
+          run_install: true
+
+      # Build
+      - name: BUILD
+        run: yarn build
+
+      # Upload dist artifacts
+      - uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist/
+
+
