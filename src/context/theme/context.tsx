@@ -15,7 +15,7 @@ const ThemeProviderContext = (props: ComponentsProps) => {
   const [theme, setTheme] = useState<string>(() =>{
     const persistedTheme = localStorage.getItem('@githubexplorer:theme');
     if(persistedTheme === 'light'){
-      return  'light';
+      return  'light'
     }
     return 'dark'
   })

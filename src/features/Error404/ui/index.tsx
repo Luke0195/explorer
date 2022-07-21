@@ -5,7 +5,7 @@ const Error404 = () =>{
   return(
     <S.Container>
           <S.Content>
-            <h2> Página não encontrada {':('} </h2>
+            <h2> Página não encontrada {' :( '} </h2>
           </S.Content>
     </S.Container>
   )
