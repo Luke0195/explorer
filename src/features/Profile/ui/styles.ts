@@ -53,6 +53,7 @@ export const Main = styled.div`
   justify-content:center;
   width:100%;
   max-width: 21.875rem;
+  color:${(props) => props.theme.text};
 
   strong{
     font-size: 1.8rem;
@@ -85,9 +86,13 @@ div{
   justify-content:center;
   cursor:pointer;
 
-  span{
+  strong{
     margin-top: 0.8rem;
-    display:block;
+    color:${(props) => props.theme.text};
+  }
+
+  svg{
+    color:${(props) => props.theme.text};
   }
  }
 `
