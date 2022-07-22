@@ -1,6 +1,8 @@
 import React  from 'react';
 import { useNavigate } from 'react-router-dom'
-import { FiArrowLeft } from 'react-icons/fi'
+import { FiArrowLeft, FiUserCheck } from 'react-icons/fi'
+import { AiOutlineUser } from 'react-icons/ai'
+import { RiGitRepositoryCommitsLine } from 'react-icons/ri'
 import { toast } from 'react-toastify'
 
 import { getUserInfo } from '../services'
@@ -48,6 +50,7 @@ const ProfileUi = () =>{
             <FiArrowLeft size={18} onClick={() => navigate('/dashboard')}/>
             <span> Voltar </span>
         </S.Header>
+        <S.Wrapper>
 
           <S.Main>
             <div>
@@ -56,6 +59,21 @@ const ProfileUi = () =>{
               <p> {notEmptyStringOrDefault(userData.bio)}</p>
             </div>
           </S.Main>
+          <S.Card>
+            <div>
+                <RiGitRepositoryCommitsLine size={28}/>
+                <strong> {userData.public_repos}</strong>
+            </div>
+            <div>
+                <FiUserCheck size={28}/>
+                <strong> {userData.followers}</strong>
+            </div>
+            <div>
+                <AiOutlineUser size={28}/>
+                <strong> {userData.following}</strong>
+            </div>
+          </S.Card>
+        </S.Wrapper>
       </S.Content>
     </S.Container>
   )

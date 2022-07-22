@@ -12,7 +12,7 @@ position:relative;
 
 export const Content = styled.div`
  padding: 2rem;
- width:100%;
+ flex:1;
  height:100%;
  max-width: 75rem;
  margin: auto;
@@ -33,9 +33,8 @@ export const Header = styled.div`
   }
 `
 export const Main = styled.div`
- margin-top: 2rem;
- height:100%;
- flex:1;
+
+
  display:flex;
  flex-direction:column;
  align-items:center;
@@ -75,4 +74,30 @@ export const Card = styled.div`
  margin-top: 1rem;
  width:100%;
  max-width: 21.875rem;
+ display:flex;
+ justify-content: space-evenly ;
+ align-items:center;
+
+div{
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content:center;
+  cursor:pointer;
+
+  span{
+    margin-top: 0.8rem;
+    display:block;
+  }
+ }
+`
+export const Wrapper = styled.div`
+ width:100%;
+ height:100%;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center ;
+ flex:1;
+
 `
