@@ -1,10 +1,6 @@
-# .github/workflows/netlify.yml
-name: Ci
+name: CI
 on:
   push:
-   paths-ignore:
-     - ./github/**
-     - .netlify
   pull_request:
 jobs:
   build:
@@ -12,10 +8,21 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      # ( Build to ./dist or other directory... )
 
-      - name:  build
+      - name: deploy
+        uses: nwtgck/actions-netlify@v1.2
+        with:
+          publish-dir: './dist'
+          production-branch: main
+          deploy-message: "Deploy from GitHub Actions"
+          enable-pull-request-comment: false
+          enable-commit-comment: true
+          overwrites-pull-request-comment: true
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         timeout-minutes: 1
-        run:     yarn yarn build npx netlify --prod
+        run:
+         yarn
+         yarn build
