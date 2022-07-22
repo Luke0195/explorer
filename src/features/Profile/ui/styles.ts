@@ -4,6 +4,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
 width:100%;
 height: 100%;
+position:relative;
 
 
 `
@@ -12,6 +13,7 @@ height: 100%;
 export const Content = styled.div`
  padding: 2rem;
  width:100%;
+ height:100%;
  max-width: 75rem;
  margin: auto;
 
@@ -31,10 +33,46 @@ export const Header = styled.div`
   }
 `
 export const Main = styled.div`
- margin-top: 1rem;
+ margin-top: 2rem;
+ height:100%;
+ flex:1;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center ;
 
- h1{
-  color:${(props) => props.theme.text};
-  text-align:center;
+ img{
+  width: 150px;
+  height:150px;
+  border-radius:  50%;
  }
+
+ div{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  max-width: 21.875rem;
+
+  strong{
+    font-size: 1.8rem;
+    margin: 0.5rem 0;
+    color:${(props) => props.theme.text};
+  }
+
+  p{
+    width:100%;
+    font-size: 1.1rem;
+    text-align:center;
+    margin-top: 0.5rem;
+    color:${(props) => props.theme.text};
+  }
+ }
+`
+
+export const Card = styled.div`
+ margin-top: 1rem;
+ width:100%;
+ max-width: 21.875rem;
 `
