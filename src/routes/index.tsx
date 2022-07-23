@@ -5,7 +5,6 @@ import SignIn from '../pages/SignIn'
 import Dashboard from '../pages/Dashboard'
 import Profile from '../pages/Profile'
 import Error404 from '../pages/Error404'
-import Repository from '../pages/Repository'
 
 const Routes = () => {
   return (
@@ -16,14 +15,6 @@ const Routes = () => {
         element={
           <ProtectedRoute>
             <Dashboard />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path='repository'
-        element={
-          <ProtectedRoute>
-            <Repository />
           </ProtectedRoute>
         }
       />
